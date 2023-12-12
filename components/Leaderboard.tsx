@@ -10,7 +10,7 @@ type Props = {
   backgroundGradient: string;
 };
 
-const initialDisplayCount = 50;
+const initialDisplayCount = 10;
 
 export default function Leaderboard({
   leaders,
@@ -104,12 +104,12 @@ export default function Leaderboard({
         />
         <button
           onClick={handleSearch}
-          className="bg-blue-500 text-white rounded-r-md p-2 ml-1 transition-all duration-300 transform hover:scale-105"
+          className="bg-blue-500 text-black font-bold rounded-r-md p-2 ml-1 transition-all duration-300 transform hover:scale-105"
         >
           Search
         </button>
       </div>
-      <div className="text-2xl mb-4">
+      <div className= "text-black font-bold text-2xl mb-4">
         Leaderboard
       </div>
       <div className="overflow-x-auto">
