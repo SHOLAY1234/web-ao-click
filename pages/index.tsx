@@ -38,14 +38,6 @@ const Home: NextPage = () => {
     leaderboardGradient: "linear-gradient(to right, #adff4e, #9aff9b)",
   },
   {
-    backgroundGradientBeforeConnect: "linear-gradient(to right, #f0ded1, #e5cbbd)",
-    backgroundGradient: "linear-gradient(to right, #e5cbbd, #f0ded1)",
-    navbarGradient: "linear-gradient(to right, #7e9eab, #6a859c)",
-    buttonGradient: "linear-gradient(to right, #f4c542, #f7982e)",
-    buttonHoverGradient: "linear-gradient(to right, #f7982e, #f4c542)",
-    leaderboardGradient: "linear-gradient(to right, #a7d2a4, #8db9b2)",
-  },
-  {
     backgroundGradientBeforeConnect: "linear-gradient(to right, #bfe5d4, #afd5c2)",
     backgroundGradient: "linear-gradient(to right, #afd5c2, #bfe5d4)",
     navbarGradient: "linear-gradient(to right, #39868c, #186174)",
