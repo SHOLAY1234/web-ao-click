@@ -319,7 +319,7 @@ const Home: NextPage = () => {
                   </strong>
                 </p>
                 <p style={{ color: 'black', fontWeight: 'bold' }}>
-                  Aim for 500 clicks to unlock exclusive minting access!
+                  Aim for 150 clicks to unlock exclusive minting access!
                 </p>
                 <p style={{ color: 'black', fontWeight: 'bold' }}>
                   To participate, simply click the Click Me button. Achieve 500 clicks to qualify for a complimentary minting opportunity.
