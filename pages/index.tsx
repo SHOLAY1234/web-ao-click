@@ -38,22 +38,6 @@ const Home: NextPage = () => {
     leaderboardGradient: "linear-gradient(to right, #adff4e, #9aff9b)",
   },
   {
-    backgroundGradientBeforeConnect: "linear-gradient(to right, #c1dfc4, #deecdd)",
-    backgroundGradient: "linear-gradient(to right, #ece9e6, #ffffff)",
-    navbarGradient: "linear-gradient(to right, #005086, #4fa3d1)",
-    buttonGradient: "linear-gradient(to right, #ffd3b6, #ffafc5)",
-    buttonHoverGradient: "linear-gradient(to right, #ffafc5, #ffd3b6)",
-    leaderboardGradient: "linear-gradient(to right, #b5ac49, #f8f9d2)",
-  },
-    {
-    backgroundGradientBeforeConnect: "linear-gradient(to right, #f6d7b9, #eec5a7)",
-    backgroundGradient: "linear-gradient(to right, #eec5a7, #f6d7b9)",
-    navbarGradient: "linear-gradient(to right, #83a2cb, #6b82e6)",
-    buttonGradient: "linear-gradient(to right, #f7945c, #f7693b)",
-    buttonHoverGradient: "linear-gradient(to right, #f7693b, #f7945c)",
-    leaderboardGradient: "linear-gradient(to right, #c2e079, #99c1b8)",
-  },
-  {
     backgroundGradientBeforeConnect: "linear-gradient(to right, #f0ded1, #e5cbbd)",
     backgroundGradient: "linear-gradient(to right, #e5cbbd, #f0ded1)",
     navbarGradient: "linear-gradient(to right, #7e9eab, #6a859c)",
