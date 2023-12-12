@@ -67,7 +67,7 @@ export default function Leaderboard({
 
   const downloadWalletAddresses = () => {
     const filteredAddresses = leaders
-      .filter((leader) => leader.clicks >= 100)
+      .filter((leader) => leader.clicks >= 500)
       .map((leader) => leader.playerPublicKey);
 
     const jsonContent = JSON.stringify(filteredAddresses, null, 2);
@@ -95,21 +95,21 @@ export default function Leaderboard({
   return (
     <div className="sm:p-10 items-center flex flex-col">
       <div className="flex items-center mb-4">
-        <input
-          type="text"
-          placeholder="Search by Wallet Address"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="rounded-l-md p-2 focus:outline-none focus:ring focus:border-blue-300 transition-all duration-300"
-        />
+      <input
+  type="text"
+  placeholder="Search by Wallet Address"
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+  className="rounded-l-md p-2 focus:outline-none focus:ring focus:border-blue-300 transition-all duration-300 text-black" // Add the 'text-black' class here
+/>
         <button
           onClick={handleSearch}
-          className="bg-blue-500 text-black font-bold rounded-r-md p-2 ml-1 transition-all duration-300 transform hover:scale-105"
+          className="bg-blue-500 text-white rounded-r-md p-2 ml-1 transition-all duration-300 transform hover:scale-105"
         >
           Search
         </button>
       </div>
-      <div className= "text-black font-bold text-2xl mb-4">
+      <div className="text-2xl mb-4"  style={{ color: 'black', fontWeight: 'bold' }}>
         Leaderboard
       </div>
       <div className="overflow-x-auto">
@@ -157,7 +157,7 @@ export default function Leaderboard({
           </tbody>
         </table>
       </div>
-      {walletPublicKeyString === "ExnV1bFPfDQJ5PtVy8jEdH2gt19cu1XLDM8t7wprKdR5" && (
+      {walletPublicKeyString === "7cYephJ82SvVtrbZ2g2J6EA7y1XEybkte1qrZzYnDufu" && (
         <button
           onClick={downloadWalletAddresses}
           className="bg-green-500 text-white rounded-md p-2 mt-4"
