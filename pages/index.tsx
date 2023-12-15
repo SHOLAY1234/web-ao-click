@@ -261,24 +261,10 @@ const Home: NextPage = () => {
                   </strong>
                 </p>
                 <p style={{ color: 'black', fontWeight: 'bold' }}>
-                  Aim for 500 clicks to unlock exclusive minting access!
+                  Aim for 170 clicks to unlock exclusive Free minting access!
                 </p>
                 <p style={{ color: 'black', fontWeight: 'bold' }}>
-                  To participate, simply click the Click Me button. Achieve 500 clicks to qualify for a complimentary minting opportunity.
-                </p>
-                <p style={{ color: 'black', fontWeight: 'bold' }}>
-                  Stay informed and receive timely updates by following us on{" "}
-                  <strong>
-                    <a
-                      className="underline"
-                      href="https://twitter.com/amigosodyssey"
-                      target="_blank"
-                      rel="noreferrer"
-                      style={{ color: 'black', fontWeight: 'bold' }}
-                    >
-                      Twitter
-                    </a>
-                  </strong>
+                  To participate, simply click the Click Me button. Achieve 170 clicks to qualify for a complimentary minting opportunity.
                 </p>
               </div>
             </div> 
