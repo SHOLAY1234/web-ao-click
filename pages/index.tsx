@@ -100,7 +100,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen" 
       style={{
-        backgroundImage: "url('/background.jpg')",
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/background.jpg')`,  // Adjust the opacity (0.5 in this example)
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
