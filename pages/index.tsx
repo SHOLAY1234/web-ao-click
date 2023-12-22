@@ -18,53 +18,10 @@ import {
 } from "../lib/clicker-anchor-client";
 
 const Home: NextPage = () => {
-  const [currentColorSchemeIndex, setCurrentColorSchemeIndex] = useState(0);
+  const buttonGradient = "linear-gradient(to right, #c4df9b, #7fad6c)";
+  const buttonHoverGradient = "linear-gradient(to right, #7fad6c, #c4df9b)";
+  const leaderboardGradient = "linear-gradient(to right, #fff6dd, #fff6ee)";
 
-  const colorSchemes = [
-    {
-      backgroundGradientBeforeConnect: "linear-gradient(to right, #d1e0f9, #e2e2e2)",
-      backgroundGradient: "linear-gradient(to right, #d1e0f9, #e2e2e2)",
-      navbarGradient: "linear-gradient(to right, #7ea5e0, #7ea5e0)",
-      buttonGradient: "linear-gradient(to right, #ffb2bb, #8dd3ff)",
-      buttonHoverGradient: "linear-gradient(to right, #8dd3ff, #ffb2bb)",
-      leaderboardGradient: "linear-gradient(to right, #adff4e, #9aff9b)",
-    },
-    {
-      backgroundGradientBeforeConnect: "linear-gradient(to right, #bfe5d4, #afd5c2)",
-      backgroundGradient: "linear-gradient(to right, #afd5c2, #bfe5d4)",
-      navbarGradient: "linear-gradient(to right, #39868c, #186174)",
-      buttonGradient: "linear-gradient(to right, #e0d267, #dcb63e)",
-      buttonHoverGradient: "linear-gradient(to right, #dcb63e, #e0d267)",
-      leaderboardGradient: "linear-gradient(to right, #f7ea96, #bdd79c)",
-    },
-    {
-      backgroundGradientBeforeConnect: "linear-gradient(to right, #ffeded, #ffd3d3)",
-      backgroundGradient: "linear-gradient(to right, #ffd3d3, #ffeded)",
-      navbarGradient: "linear-gradient(to right, #ff6666, #ff3333)",
-      buttonGradient: "linear-gradient(to right, #ffaa80, #ff7a59)",
-      buttonHoverGradient: "linear-gradient(to right, #ff7a59, #ffaa80)",
-      leaderboardGradient: "linear-gradient(to right, #ffe680, #ffd66b)",
-    },
-    {
-      backgroundGradientBeforeConnect: "linear-gradient(to right, #d6e2f4, #adc8e6)",
-      backgroundGradient: "linear-gradient(to right, #adc8e6, #d6e2f4)",
-      navbarGradient: "linear-gradient(to right, #4d68b0, #6b82e6)",
-      buttonGradient: "linear-gradient(to right, #ffb971, #ff8a5a)",
-      buttonHoverGradient: "linear-gradient(to right, #ff8a5a, #ffb971)",
-      leaderboardGradient: "linear-gradient(to right, #6ac88e, #4d95b5)",
-    },
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentColorSchemeIndex((prevIndex) => (prevIndex + 1) % colorSchemes.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const currentColorScheme = colorSchemes[currentColorSchemeIndex];
-  
   const [clicks, setClicks] = useState(0);
   const [effect, setEffect] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
@@ -141,7 +98,16 @@ const Home: NextPage = () => {
   }, [wallet, endpoint]);
 
   return (
-    <div className="flex items-center flex-col sm:p-4 p-1" style={{ background: isConnected ? currentColorScheme.backgroundGradient : currentColorScheme.backgroundGradientBeforeConnect }}>
+    <div className="flex flex-col items-center justify-center min-h-screen" 
+      style={{
+        backgroundImage: "url('/background.jpg')",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundColor: "black",
+        // Add other styles as needed
+      }}
+    >
       <Head>
         <title>AMIGOS ODYSSEY CLICK</title>
         <meta name="title" content="AMIGOS ODYSSEY CLICK" />
@@ -159,140 +125,120 @@ const Home: NextPage = () => {
         <meta name="twitter:image" content="https://amigos-odyssey-click.vercel.app/" />
       </Head>
 
-      <div className="navbar mb-2 text-base-content rounded-full sm:p-4" style={{ background: currentColorScheme.navbarGradient }}>
+      <div className="navbar mb-2 text-base-content rounded-full sm:p-4" style={{  marginBottom: '20px' }}>
         <div className="flex-1 text-xl font-mono">
-           <img src="/logo.jpg" alt="Logo" className="h-14 sm:h-14 w-auto rounded-md" />
+          <img
+            src="/logo.jpg"
+            alt="Logo"
+            className="h-14 sm:h-14 w-auto rounded-md hidden md:block"
+          />
         </div>
         <div className="flex justify-center items-center">
-    <a
-      href="https://amigos-odyssey-space.vercel.app/"
-      target="_blank"
-      rel="noreferrer"
-      className="btn btn-sm text-white rounded-full mx-2"
-      style={{
-        background: currentColorScheme.buttonGradient,
-        transition: 'background 0.3s ease-out',
-      }}
-    >
-      AO Space
-    </a>
-  </div>
-        <div>
-          <WalletMultiButton />
+          <a
+            href="https://amigos-odyssey-space.vercel.app/"
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-sm text-white rounded-full mx-2"
+            style={{
+              background: buttonGradient,
+              transition: 'background 0.3s ease-out',
+            }}
+          >
+            AO Space
+          </a>
         </div>
-        <div className="badge badge-accent badge-outline flex-none XXXml-2">
-          <a href="#devnet">devnet</a>
-        </div>
+        <div style={{ padding: '10px', backgroundColor: 'black', borderRadius: '20px', display: 'inline-block' }}>
+  <WalletMultiButton />
+</div>
+
       </div>
 
-      <div>
-        <div className="flex flex-col sm:flex-row gap-5">
-          <div className="p-4 flex flex-col items-center gap-3">
-            <div className="flex flex-col items-center p-2">
-              {isGameReady && gameError && (
-                <div className="alert alert-error shadow-lg" style={{ background:currentColorScheme. buttonGradient }}>
-                  <div>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="stroke-current flex-shrink-0 h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    <span style={{ color: 'white' }}>{gameError}</span>
-                  </div>
-                </div>
-              )}
-              {isGameReady && (
-                <div
-                  onAnimationEnd={() => {
-                    setEffect(false);
-                  }}
-                  className={effect ? "animate-wiggle" : ""}
-                  style={{ color: 'black', fontWeight: 'bold' }}>
-                  {clicks} clicks
-                </div>
-              )}
+      <div className="flex flex-col items-center">
+        <div className="p-4 flex flex-col items-center gap-3">
+          {isGameReady && gameError && (
+            <div className="alert alert-error shadow-lg" style={{ background: buttonGradient }}>
+              <div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="stroke-current flex-shrink-0 h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span style={{ color: 'white' }}>{gameError}</span>
+              </div>
             </div>
-            <button
-              disabled={!isGameReady}
-              onClick={() => {
-                handleClick();
+          )}
+          {isGameReady && (
+            <div
+              onAnimationEnd={() => {
+                setEffect(false);
               }}
-              className="btn btn-lg text-white border-4 h-36 w-36 rounded-full transform transition-transform hover:scale-105"
-              style={{
-                color: 'black', fontWeight: 'bold',
-                background:currentColorScheme. buttonGradient,
-                position: 'relative',
-                overflow: 'hidden',
-              }}
+              className={effect ? "animate-wiggle" : ""}
+              style={{ color: 'black', fontWeight: 'bold' }}
             >
-              <span
-                className="absolute top-0 left-0 w-full h-full bg-white opacity-20"
-                style={{
-                  transition: 'background 0.3s ease-out',
-                  background:currentColorScheme. buttonHoverGradient,
-                  color: 'black', fontWeight: 'bold'
-                }}
-              ></span>
-              Click Me 
-            </button>
-
-            {isGameReady && (
-               <div className="sm:w-3/4">
-              <div>
-                <p>
-                  <strong>
-                    <a
-                      className="underline"
-                      href="https://twitter.com/amigosodyssey"
-                      target="_blank"
-                      rel="noreferrer"
-                      style={{ color: 'black', fontWeight: 'bold' }}
-                    >
-                      Guide
-                    </a>
-                  </strong>
-                </p>
-                <p style={{ color: 'black', fontWeight: 'bold' }}>
-                  Aim for 170 clicks to unlock exclusive Free minting access!
-                </p>
-                <p style={{ color: 'black', fontWeight: 'bold' }}>
-                  To participate, simply click the Click Me button. Achieve 170 clicks to qualify for a complimentary minting opportunity.
-                </p>
-              </div>
-            </div> 
-            )}
-
-            {!isConnected && (
-              <div>
-                <WalletMultiButton />
-              </div>
-            )}
-
-            {!isGameReady && isConnected && (
-              <div>
-                <p className="p-2">Game initializing...</p>
-              </div>
-            )}
-          </div>
-
-          {wallet && (
-            <Leaderboard
-              leaders={leaders}
-              walletPublicKeyString={wallet.publicKey.toBase58()}
-              clicks={clicks}
-              backgroundGradient={currentColorScheme.leaderboardGradient}
-            />
+              {clicks} clicks
+            </div>
           )}
         </div>
+        <button
+          disabled={!isGameReady}
+          onClick={() => {
+            handleClick();
+          }}
+          className="btn btn-lg text-white border-4 h-36 w-36 rounded-full transform transition-transform hover:scale-105"
+          style={{
+            color: 'black', fontWeight: 'bold',
+            background: buttonGradient,
+            position: 'relative',
+            overflow: 'hidden',
+            marginBottom: '20px',
+          }}
+        >
+          <span
+            className="absolute top-0 left-0 w-full h-full bg-white opacity-20"
+            style={{
+              transition: 'background 0.3s ease-out',
+              background: buttonHoverGradient,
+              color: 'black', fontWeight: 'bold'
+            }}
+          ></span>
+          Click Me 
+        </button>
+
+        {isGameReady && (
+          <div className="sm:w-3/4">
+          </div> 
+        )}
+
+        {!isConnected && (
+          <div style={{ padding: '10px', backgroundColor: 'black', borderRadius: '20px', display: 'inline-block' }}>
+          <WalletMultiButton />
+        </div>
+        
+        )}
+
+        {!isGameReady && isConnected && (
+          <div>
+            <p className="p-2">Game initializing...</p>
+          </div>
+        )}
       </div>
+
+      {wallet && (
+        <Leaderboard
+          leaders={leaders}
+          walletPublicKeyString={wallet.publicKey.toBase58()}
+          clicks={clicks}
+          backgroundGradient={leaderboardGradient}
+        />
+      )}
     </div>
   );
 };
