@@ -5,26 +5,21 @@ module.exports = {
   ],
   theme: {
     extend: {
-      keyframes: {
-        wiggle: {
-          "0%, 100%": { transform: "rotate(-3deg) scale(1)" },
-          "50%": { transform: "rotate(3deg) scale(1.8)" },
-        },
+      borderColor: {
+        green: '#00ff00', // Add your preferred green color code
       },
-      animation: {
-        wiggle: "wiggle 200ms ease-in-out",
-      },
+      
     },
   },
   plugins: [require("daisyui")],
   daisyui: {
     styled: true,
-    themes: ["synthwave"],
+    themes: ["night-owl"],
     base: true,
     utils: true,
     logs: true,
     rtl: false,
     prefix: "",
-    darkTheme: "synthwave",
+    darkTheme: "night-owl",
   },
 };
