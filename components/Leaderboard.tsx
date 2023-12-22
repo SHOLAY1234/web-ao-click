@@ -1,3 +1,4 @@
+// Import statements (keep your existing imports)
 import { useState, useEffect } from "react";
 import { LeaderboardItem } from "@/lib/clicker-anchor-client";
 import { toast } from "react-toastify";
@@ -16,10 +17,23 @@ export default function Leaderboard({
   leaders,
   walletPublicKeyString,
   clicks,
+  backgroundGradient,
 }: Props) {
   const [displayLeaders, setDisplayLeaders] = useState<LeaderboardItem[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [displayCount, setDisplayCount] = useState<number>(initialDisplayCount);
+  const [currentGradient, setCurrentGradient] = useState<string>(backgroundGradient);
+
+  const generateSequentialLinearGradient = (): string => {
+    const colors = [
+      "linear-gradient(to right, #fff6dd, #fff6ee)",
+    ];
+
+    const currentIndex = colors.indexOf(currentGradient);
+    const nextIndex = (currentIndex + 1) % colors.length;
+
+    return colors[nextIndex];
+  };
 
   useEffect(() => {
     let foundCurrentUser = false;
@@ -45,6 +59,15 @@ export default function Leaderboard({
     setDisplayLeaders(sortByClicks.slice(0, displayCount));
   }, [clicks, walletPublicKeyString, leaders, displayCount]);
 
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const newGradient = generateSequentialLinearGradient();
+      setCurrentGradient(newGradient);
+    }, 3000);
+
+    return () => clearInterval(intervalId);
+  }, [currentGradient]);
+
   const handleSearch = () => {
     if (searchTerm === "") {
       setDisplayLeaders([...leaders.slice(0, displayCount)]);
@@ -67,7 +90,7 @@ export default function Leaderboard({
 
   const downloadWalletAddresses = () => {
     const filteredAddresses = leaders
-      .filter((leader) => leader.clicks >= 500)
+      .filter((leader) => leader.clicks >= 150)
       .map((leader) => leader.playerPublicKey);
 
     const jsonContent = JSON.stringify(filteredAddresses, null, 2);
@@ -93,55 +116,55 @@ export default function Leaderboard({
   };
 
   return (
-    <div className="sm:p-10 items-center flex flex-col">
+    <div className="sm:p-10 items-center flex flex-col" style={{ background: "linear-gradient(to right, #fff6dd, #fff6ee)", borderColor: 'black', borderWidth: '2px', borderRadius: '30px' }}>
       <div className="flex items-center mb-4">
       <input
   type="text"
   placeholder="Search by Wallet Address"
   value={searchTerm}
   onChange={(e) => setSearchTerm(e.target.value)}
-  className="rounded-l-md p-2 focus:outline-none focus:ring focus:border-blue-300 transition-all duration-300 text-black" // Add the 'text-black' class here
+  className="rounded-l-md p-2 focus:outline-green-500 focus:ring focus:border-green-500 transition-all duration-300 text-black"
 />
         <button
           onClick={handleSearch}
-          className="bg-blue-500 text-white rounded-r-md p-2 ml-1 transition-all duration-300 transform hover:scale-105"
+          className="bg-green-500 text-white rounded-r-md p-2 ml-1 transition-all duration-300 transform hover:scale-105"
         >
           Search
         </button>
       </div>
-      <div className="text-2xl mb-4"  style={{ color: 'black', fontWeight: 'bold' }}>
+      <div>
+        <p style={{ color: 'black', fontWeight: 'bold' }}>
+          Target : 150 Clicks
+        </p>
+      </div>
+      <div className="text-2xl mb-4" style={{ color: 'black', fontWeight: 'bold' }}>
         Leaderboard
       </div>
       <div className="overflow-x-auto">
-        <table
-          className="table table-zebra w-full leaderboard-table"
-        >
+        <table className="table table-zebra w-full leaderboard-table" style={{ borderColor: 'black', borderRadius: '30px' }}>
           <thead>
             <tr>
-              <th className="text-center">
+              <th className="text-center border rounded p-2 font-bold" style={{ borderColor: 'black', borderRadius: '30px' }}>
                 Rank
               </th>
-              <th className="text-center">
+              <th className="text-center border rounded p-2 font-bold" style={{ borderColor: 'black', borderRadius: '30px' }}>
                 Player
               </th>
-              <th className="text-center">
+              <th className="text-center border rounded p-2 font-bold" style={{ borderColor: 'black', borderRadius: '30px' }}>
                 Total Clicks
               </th>
             </tr>
           </thead>
           <tbody>
             {displayLeaders.map((leader, index) => (
-              <tr
-                key={leader.playerPublicKey}
-                className="leaderboard-row"
-              >
-                <th className="text-center">
+              <tr key={leader.playerPublicKey} className="leaderboard-row">
+                <th className="text-center border rounded p-2 font-bold" style={{ borderColor: 'black', borderRadius: '30px' }}>
                   {index + 1}
                 </th>
                 <td
-                  className="text-center"
+                  className="text-center border rounded p-2 font-bold"
                   onClick={() => copyToClipboard(leader.playerPublicKey)}
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", borderColor: 'black', borderRadius: '30px', fontWeight: leader.playerPublicKey === walletPublicKeyString ? 'bold' : 'normal' }}
                 >
                   {leader.playerPublicKey === walletPublicKeyString ? (
                     <b>You</b>
@@ -149,7 +172,7 @@ export default function Leaderboard({
                     <span>{leader.playerPublicKey}</span>
                   )}
                 </td>
-                <td className="text-center">
+                <td className="text-center border rounded p-2 font-bold" style={{ borderColor: 'black', borderRadius: '30px' }}>
                   {leader.clicks}
                 </td>
               </tr>
@@ -157,18 +180,18 @@ export default function Leaderboard({
           </tbody>
         </table>
       </div>
-      {walletPublicKeyString === "7cYephJ82SvVtrbZ2g2J6EA7y1XEybkte1qrZzYnDufu" && (
+      {walletPublicKeyString === "ExnV1bFPfDQJ5PtVy8jEdH2gt19cu1XLDM8t7wprKdR5" && (
         <button
           onClick={downloadWalletAddresses}
-          className="bg-green-500 text-white rounded-md p-2 mt-4"
+          className="bg-black font-bold text-white rounded-md p-2 mt-4" style={{ borderColor: 'black', borderRadius: '30px' }}
         >
-          Download Wallet Addresses (5+ clicks)
+          Download Wallet Addresses (150+ clicks)
         </button>
       )}
       {leaders.length > displayCount && (
         <button
           onClick={handleLoadMore}
-          className="bg-blue-500 text-white rounded-md p-2 mt-4"
+          className="bg-green-500 text-white rounded-md p-2 mt-4"style={{ borderColor: 'black', borderRadius: '30px' }}
         >
           Load More
         </button>
