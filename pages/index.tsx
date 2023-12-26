@@ -181,7 +181,7 @@ const Home: NextPage = () => {
                 setEffect(false);
               }}
               className={effect ? "animate-wiggle" : ""}
-              style={{ color: 'blue', fontWeight: 'bold' }}
+              style={{ color: 'green', fontWeight: 'bold' }}
             >
               {clicks} clicks
             </div>
