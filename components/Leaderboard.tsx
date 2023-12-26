@@ -90,7 +90,7 @@ export default function Leaderboard({
 
   const downloadWalletAddresses = () => {
     const filteredAddresses = leaders
-      .filter((leader) => leader.clicks >= 150)
+      .filter((leader) => leader.clicks >= 100)
       .map((leader) => leader.playerPublicKey);
 
     const jsonContent = JSON.stringify(filteredAddresses, null, 2);
@@ -185,7 +185,7 @@ export default function Leaderboard({
           onClick={downloadWalletAddresses}
           className="bg-black font-bold text-white rounded-md p-2 mt-4" style={{ borderColor: 'black', borderRadius: '30px' }}
         >
-          Download Wallet Addresses (150+ clicks)
+          Download Wallet Addresses (100+ clicks)
         </button>
       )}
       {leaders.length > displayCount && (
