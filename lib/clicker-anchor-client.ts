@@ -5,7 +5,7 @@ import { AnchorWallet } from "@solana/wallet-adapter-react";
 import { Program, AnchorProvider, Provider, web3 } from "@project-serum/anchor";
 
 const programAddress = new PublicKey(
-  "7iYhg7aT8i5zCzRhSc9gNbGMTabVseR6QeeKCJQTpnay"
+  "FKhPw9GxcHM1W6b1XmjLXiwd5YQrafetAuk8KMDJuQbx"
 );
 
 // Type of object coming back from `program.account.game.all()` call
