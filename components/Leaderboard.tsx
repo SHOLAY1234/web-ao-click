@@ -134,7 +134,7 @@ export default function Leaderboard({
       </div>
       <div>
         <p style={{ color: 'black', fontWeight: 'bold' }}>
-          Target : 150 Clicks
+          Target : 100 Clicks
         </p>
       </div>
       <div className="text-2xl mb-4" style={{ color: 'black', fontWeight: 'bold' }}>
